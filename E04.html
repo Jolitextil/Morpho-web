@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MORPHO E04 | Dios tiene el control</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --negro: #080808;
+            --blanco: #f8f5ef;
+            --crema: #e9dfcd;
+            --dorado: #b79a62;
+            --gris: #777;
+            --linea: #ddd;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--blanco);
+            color: #111;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            height: 76px;
+            background: var(--negro);
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo svg {
+            width: 48px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        .logo-sub {
+            display: block;
+            color: var(--dorado);
+            font-size: 7px;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--dorado);
+        }
+
+        /* ================= PRODUCTO ================= */
+
+        .product-page {
+            max-width: 1250px;
+            margin: auto;
+
+            padding: 60px 30px 90px;
+
+            display: grid;
+            grid-template-columns: 55% 45%;
+
+            gap: 60px;
+        }
+
+        /* ================= GALERIA ================= */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .gallery-item {
+            background: #e8e5df;
+
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: .4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .gallery-item:first-child {
+            grid-column: 1 / 3;
+        }
+
+        /* ================= INFORMACION ================= */
+
+        .product-info {
+            padding: 15px 0;
+        }
+
+        .product-code {
+            color: var(--dorado);
+
+            font-size: 12px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 15px;
+        }
+
+        .product-info h1 {
+            font-family: Georgia, serif;
+
+            font-size: 48px;
+            font-weight: normal;
+
+            line-height: 1.1;
+
+            margin-bottom: 20px;
+        }
+
+        .line {
+            width: 100px;
+            height: 2px;
+
+            background: var(--dorado);
+
+            margin-bottom: 25px;
+        }
+
+        .phrase {
+            font-family: Georgia, serif;
+
+            font-size: 23px;
+            line-height: 1.4;
+
+            margin-bottom: 10px;
+        }
+
+        .verse {
+            color: var(--dorado);
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 30px;
+        }
+
+        .description {
+            color: #555;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+        /* ================= DETALLES ================= */
+
+        .details {
+            border-top: 1px solid var(--linea);
+
+            border-bottom: 1px solid var(--linea);
+
+            padding: 20px 0;
+
+            margin-bottom: 30px;
+        }
+
+        .detail {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 9px 0;
+
+            font-size: 13px;
+        }
+
+        .detail span:first-child {
+            color: #777;
+        }
+
+        .detail span:last-child {
+            font-weight: bold;
+        }
+
+        /* ================= COLORES ================= */
+
+        .section-title {
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+        .colors {
+            display: flex;
+
+            gap: 12px;
+
+            margin-bottom: 30px;
+        }
+
+        .color {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            border: 2px solid #ccc;
+        }
+
+        .black {
+            background: #080808;
+        }
+
+        .white {
+            background: #ffffff;
+        }
+
+        .melange {
+            background: #b9b7b2;
+        }
+
+        .beige {
+            background: #d9c7aa;
+        }
+
+ /* ================= PRECIO ================= */
+
+.price-section {
+    border-top: 1px solid var(--linea);
+    border-bottom: 1px solid var(--linea);
+
+    padding: 25px 0;
+
+    margin-bottom: 30px;
+}
+
+.price-section .section-title {
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 32px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    color: #111;
+}
+
+        /* ================= TALLAS ================= */
+
+        .sizes {
+            display: flex;
+
+            gap: 8px;
+
+            margin-bottom: 35px;
+        }
+
+        .size {
+            width: 45px;
+            height: 42px;
+
+            border: 1px solid #bbb;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+        .size:hover {
+            background: var(--negro);
+
+            color: white;
+        }
+
+        /* ================= WHATSAPP ================= */
+
+        .whatsapp {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 100%;
+
+            padding: 18px;
+
+            background: #111;
+
+            color: white;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            font-size: 13px;
+
+            transition: .3s;
+        }
+
+        .whatsapp:hover {
+            background: var(--dorado);
+
+            color: #111;
+        }
+
+        .whatsapp-icon {
+            font-size: 20px;
+
+            margin-right: 10px;
+        }
+
+        /* ================= VOLVER ================= */
+
+        .back {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 0 30px 30px;
+        }
+
+        .back a {
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            color: #555;
+        }
+
+        .back a:hover {
+            color: var(--dorado);
+        }
+
+        /* ================= FRASE ================= */
+
+        .message {
+            background: var(--negro);
+
+            color: white;
+
+            text-align: center;
+
+            padding: 75px 20px;
+        }
+
+        .message h2 {
+            font-family: Georgia, serif;
+
+            font-size: 34px;
+
+            font-weight: normal;
+
+            margin-bottom: 20px;
+        }
+
+        .message p {
+            color: #ccc;
+
+            max-width: 600px;
+
+            margin: auto;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+        .message span {
+            color: var(--dorado);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #050505;
+
+            color: white;
+
+            padding: 45px 7% 25px;
+
+            text-align: center;
+        }
+
+        .footer-social {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 25px;
+
+            margin: 25px 0;
+        }
+
+        .footer-social a {
+            color: #ccc;
+
+            font-size: 12px;
+        }
+
+        .footer-social a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #222;
+
+            padding-top: 20px;
+
+            color: #666;
+
+            font-size: 10px;
+        }
+
+        /* ================= MOVIL ================= */
+
+        @media(max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .product-page {
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+
+                padding-top: 35px;
+            }
+
+            .product-info {
+                padding: 0;
+            }
+
+            .product-info h1 {
+                font-size: 40px;
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            header {
+                height: 68px;
+
+                padding: 0 18px;
+            }
+
+            .logo svg {
+                width: 40px;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .logo-sub {
+                font-size: 6px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+
+                gap: 12px;
+            }
+
+            .gallery-item:first-child {
+                grid-column: auto;
+            }
+
+            .product-page {
+                padding: 25px 18px 60px;
+            }
+
+            .product-info h1 {
+                font-size: 35px;
+            }
+
+            .phrase {
+                font-size: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="index.html" class="logo">
+
+        <svg viewBox="0 0 120 90"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <path
+                d="M60 45 L43 27 L15 10 L22 30 L42 42 L20 34 L27 51 L45 57 L25 53 L34 70 L52 65 L60 52"
+                fill="white"/>
+
+            <path
+                d="M60 45 L77 27 L105 10 L98 30 L78 42 L100 34 L93 51 L75 57 L95 53 L86 70 L68 65 L60 52"
+                fill="white"/>
+
+            <path
+                d="M48 39 L60 52 L72 39 L69 68 L60 58 L51 68 Z"
+                fill="white"/>
+
+        </svg>
+
+        <div>
+
+            <div class="logo-text">
+                MORPHO
+            </div>
+
+            <span class="logo-sub">
+                VISTIENDO ESPERANZA
+            </span>
+
+        </div>
+
+    </a>
+
+    <nav>
+
+        <a href="index.html">
+            Inicio
+        </a>
+
+        <a href="index.html#coleccion">
+            Colección
+        </a>
+
+        <a href="index.html#proposito">
+            Propósito
+        </a>
+
+        <a href="#contacto">
+            Contacto
+        </a>
+
+    </nav>
+
+</header>
+
+<!-- ================= PRODUCTO ================= -->
+
+<main class="product-page">
+
+    <!-- ================= FOTOS ================= -->
+
+    <div class="gallery">
+
+        <!-- FOTO PRINCIPAL -->
+
+        <div class="gallery-item">
+
+            <img
+                src="imagenes/E04/E04.jpeg"
+                alt="MORPHO E04">
+
+        </div>
+
+        <!-- ESPALDA -->
+
+        <div class="gallery-item">
+
+            <img
+                src="imagenes/E04/E04-espalda.jpeg"
+                alt="MORPHO E04 espalda">
+
+        </div>
+
+        <!-- DELANTERO -->
+
+        <div class="gallery-item">
+
+            <img
+                src="imagenes/E04/E04-delantero.jpeg"
+                alt="MORPHO E04 delantero">
+
+        </div>
+
+    </div>
+
+    <!-- ================= INFORMACION ================= -->
+
+    <div class="product-info">
+
+        <div class="product-code">
+            MORPHO · E04
+        </div>
+
+        <h1>
+            DIOS TIENE
+            EL CONTROL
+        </h1>
+
+        <div class="line"></div>
+
+        <div class="phrase">
+            “Encomienda al Señor tu camino;
+            confía en él, y él actuará.”
+        </div>
+
+        <div class="verse">
+            SALMOS 37:5
+        </div>
+
+        <p class="description">
+
+            Una prenda que lleva un mensaje
+            de fe, confianza y esperanza.
+
+            <br><br>
+
+            E04 representa la decisión de confiar
+            en Dios aun cuando no podemos ver
+            lo que viene. Un recordatorio de que
+            no tenemos que controlar todo,
+            porque podemos poner nuestro camino
+            en sus manos.
+
+        </p>
+
+        <!-- DETALLES -->
+
+        <div class="details">
+
+            <div class="detail">
+
+                <span>
+                    Modelo
+                </span>
+
+                <span>
+                    Oversize
+                </span>
+
+            </div>
+
+            <div class="detail">
+
+                <span>
+                    Tela
+                </span>
+
+                <span>
+                    Jersey 200 g/m²
+                </span>
+
+            </div>
+
+            <div class="detail">
+
+                <span>
+                    Rib
+                </span>
+
+                <span>
+                    1x1
+                </span>
+
+            </div>
+
+            <div class="detail">
+
+                <span>
+                    Estampado
+                </span>
+
+                <span>
+                    DTF
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- ================= PRECIO ================= -->
+
+<div class="price-section">
+
+    <div class="section-title">
+        PRECIO
+    </div>
+
+    <div class="price">
+        S/ 34.90
+    </div>
+
+</div>
+
+        <!-- COLORES -->
+
+        <div class="section-title">
+            COLORES DISPONIBLES
+        </div>
+
+        <div class="colors">
+
+            <div
+                class="color black"
+                title="Negro">
+            </div>
+
+            <div
+                class="color white"
+                title="Blanco">
+            </div>
+
+            <div
+                class="color melange"
+                title="Melange 10%">
+            </div>
+
+            <div
+                class="color beige"
+                title="Beige">
+            </div>
+
+        </div>
+
+        <!-- TALLAS -->
+
+        <div class="section-title">
+            TALLAS
+        </div>
+
+        <div class="sizes">
+
+            <div class="size">
+                S
+            </div>
+
+            <div class="size">
+                M
+            </div>
+
+            <div class="size">
+                L
+            </div>
+
+        
+            </div>
+
+        </div>
+
+        <!-- WHATSAPP -->
+
+        <a
+            class="whatsapp"
+            href="https://wa.me/51993727738?text=Hola%20MORPHO,%20estoy%20interesado%20en%20el%20modelo%20E04%20-%20Dios%20tiene%20el%20control."
+            target="_blank">
+
+            <span class="whatsapp-icon">
+                ☎️
+            </span>
+
+            CONSULTAR POR WHATSAPP
+
+        </a>
+
+    </div>
+
+</main>
+
+<!-- ================= VOLVER ================= -->
+
+<div class="back">
+
+    <a href="index.html#coleccion">
+        ← VOLVER A LA COLECCIÓN
+    </a>
+
+</div>
+
+<!-- ================= MENSAJE ================= -->
+
+<section class="message">
+
+    <h2>
+        Viste un mensaje.
+    </h2>
+
+    <p>
+
+        MORPHO no busca solamente vestir.
+
+        <br><br>
+
+        Queremos que cada prenda pueda
+        recordarte que <span>Dios todavía
+        está escribiendo tu historia.</span>
+
+    </p>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contacto">
+
+    <div class="logo"
+         style="justify-content:center;">
+
+        <svg viewBox="0 0 120 90"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <path
+                d="M60 45 L43 27 L15 10 L22 30 L42 42 L20 34 L27 51 L45 57 L25 53 L34 70 L52 65 L60 52"
+                fill="white"/>
+
+            <path
+                d="M60 45 L77 27 L105 10 L98 30 L78 42 L100 34 L93 51 L75 57 L95 53 L86 70 L68 65 L60 52"
+                fill="white"/>
+
+            <path
+                d="M48 39 L60 52 L72 39 L69 68 L60 58 L51 68 Z"
+                fill="white"/>
+
+        </svg>
+
+        <div>
+
+            <div class="logo-text">
+                MORPHO
+            </div>
+
+            <span class="logo-sub">
+                VISTIENDO ESPERANZA
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="footer-social">
+
+        <a
+            href="https://instagram.com/_morpho.pe_"
+            target="_blank">
+            INSTAGRAM
+        </a>
+
+        <a
+            href="https://www.tiktok.com/@morpho605"
+            target="_blank">
+            TIKTOK
+        </a>
+
+        <a
+            href="https://www.facebook.com/profile.php?id=61591032170647"
+            target="_blank">
+            FACEBOOK
+        </a>
+
+        <a
+            href="https://wa.me/51993727738"
+            target="_blank">
+            WHATSAPP
+        </a>
+
+    </div>
+
+    <div class="copyright">
+
+        contacto.morpho.pe@gmail.com
+
+        <br><br>
+
+        © 2026 MORPHO · VISTIENDO ESPERANZA
+
+    </div>
+
+</footer>
+
+</body>
+
+</html>

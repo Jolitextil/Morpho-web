@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MORPHO | Vistiendo Esperanza</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --negro: #080808;
+            --negro2: #111111;
+            --blanco: #f8f5ef;
+            --crema: #e9dfcd;
+            --dorado: #b79a62;
+            --gris: #777;
+            --linea: #d8cdbb;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--blanco);
+            color: #111;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        header {
+            height: 76px;
+            background: var(--negro);
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo svg {
+            width: 48px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        .logo-sub {
+            display: block;
+            color: var(--dorado);
+            font-size: 7px;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--dorado);
+        }
+
+        .header-social {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .header-social a {
+            font-size: 18px;
+            color: white;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 650px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.88),
+                    rgba(0,0,0,.25)
+                ),
+                url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            color: white;
+        }
+
+        .hero-content {
+            width: 55%;
+            padding: 80px 8%;
+        }
+
+        .hero-title {
+            font-size: clamp(65px, 9vw, 120px);
+            letter-spacing: 8px;
+            line-height: .85;
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            color: var(--crema);
+            font-size: 20px;
+            letter-spacing: 7px;
+            margin-top: 25px;
+        }
+
+        .hero-butterfly {
+            font-size: 32px;
+            margin: 22px 0;
+        }
+
+        .hero-text {
+            font-family: Georgia, serif;
+            font-size: 21px;
+            line-height: 1.5;
+            max-width: 500px;
+        }
+
+        .hero-text span {
+            color: var(--crema);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 25px;
+
+            background: var(--crema);
+            color: #111;
+
+            padding: 16px 25px;
+
+            margin-top: 28px;
+
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: white;
+        }
+
+
+        /* ================= TITULO COLECCION ================= */
+
+        .collection-header {
+            text-align: center;
+            padding: 70px 20px 45px;
+            background: var(--blanco);
+        }
+
+        .collection-header small {
+            color: var(--dorado);
+            letter-spacing: 3px;
+            font-size: 11px;
+        }
+
+        .collection-header h2 {
+            font-family: Georgia, serif;
+            font-size: 45px;
+            font-weight: normal;
+            margin-top: 10px;
+        }
+
+        .collection-header p {
+            margin-top: 15px;
+            color: #666;
+        }
+
+
+        /* ================= GALERIA ================= */
+
+        .gallery {
+            max-width: 1250px;
+            margin: auto;
+
+            padding: 20px 30px 80px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+
+            border: 1px solid #ddd;
+
+            transition: .3s;
+
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.12);
+        }
+
+        .product-image {
+            background: #eee;
+
+            aspect-ratio: 4 / 5;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            transition: .4s;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-code {
+            color: var(--dorado);
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .product-info h3 {
+            font-family: Georgia, serif;
+            font-size: 22px;
+            margin: 8px 0;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .product-button {
+            display: inline-block;
+
+            margin-top: 15px;
+
+            border: 1px solid #111;
+
+            padding: 11px 17px;
+
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .product-button:hover {
+            background: #111;
+            color: white;
+        }
+
+
+        /* ================= PROPOSITO ================= */
+
+        .values {
+            background: var(--negro);
+            color: white;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            padding: 70px 6%;
+        }
+
+        .value {
+            text-align: center;
+            padding: 20px 40px;
+            border-right: 1px solid #333;
+        }
+
+        .value:last-child {
+            border: none;
+        }
+
+        .value-icon {
+            font-size: 32px;
+            color: var(--dorado);
+            margin-bottom: 18px;
+        }
+
+        .value h3 {
+            font-size: 17px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .value p {
+            color: #ccc;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .value small {
+            display: block;
+            color: var(--dorado);
+            margin-top: 18px;
+            font-size: 11px;
+        }
+
+
+        /* ================= HISTORIA ================= */
+
+        .story {
+            padding: 90px 10%;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .story-label {
+            color: var(--dorado);
+            letter-spacing: 3px;
+            font-size: 11px;
+        }
+
+        .story h2 {
+            font-family: Georgia, serif;
+            font-size: 45px;
+            font-weight: normal;
+            margin: 15px 0 25px;
+        }
+
+        .story p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .story-quote {
+            background: var(--crema);
+            padding: 45px;
+
+            font-family: Georgia, serif;
+            font-size: 27px;
+            line-height: 1.4;
+
+            text-align: center;
+        }
+
+        .story-quote small {
+            display: block;
+            color: var(--dorado);
+            font-size: 11px;
+            margin-top: 20px;
+        }
+
+
+        /* ================= REDES ================= */
+
+        .social-section {
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.82),
+                    rgba(0,0,0,.82)
+                ),
+                url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+        .social-section h2 {
+            font-family: Georgia, serif;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .social-section p {
+            color: #ccc;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            border: 1px solid var(--dorado);
+
+            padding: 15px 22px;
+
+            min-width: 150px;
+
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .social-link:hover {
+            background: var(--dorado);
+            color: #111;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #050505;
+            color: white;
+
+            padding: 60px 7% 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-description {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.6;
+            max-width: 250px;
+            margin-top: 20px;
+        }
+
+        .footer-column h4 {
+            color: var(--dorado);
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #bbb;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #222;
+
+            margin-top: 45px;
+            padding-top: 20px;
+
+            text-align: center;
+
+            color: #666;
+
+            font-size: 10px;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:900px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero-content {
+                width: 100%;
+                padding: 80px 8%;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+            }
+
+            .value {
+                border-right: none;
+                border-bottom: 1px solid #333;
+            }
+
+            .story {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media(max-width:600px) {
+
+            header {
+                height: 68px;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .logo-sub {
+                font-size: 6px;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero-title {
+                font-size: 55px;
+                letter-spacing: 4px;
+            }
+
+            .hero-subtitle {
+                font-size: 13px;
+                letter-spacing: 4px;
+            }
+
+            .hero-text {
+                font-size: 18px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                padding: 15px 20px 60px;
+            }
+
+            .collection-header h2 {
+                font-size: 36px;
+            }
+
+            .story {
+                padding: 65px 8%;
+            }
+
+            .story h2 {
+                font-size: 36px;
+            }
+
+            .story-quote {
+                padding: 30px;
+                font-size: 22px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+/* =========================
+   HERO MORPHO
+========================= */
+
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 720px;
+
+    background-image: url("imagenes/hero.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.78) 0%,
+        rgba(0,0,0,0.55) 40%,
+        rgba(0,0,0,0.08) 75%,
+        rgba(0,0,0,0.05) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1400px;
+
+    margin: auto;
+    padding: 70px 7%;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero-text h1 {
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+    font-size: clamp(70px, 9vw, 150px);
+    font-weight: 900;
+    letter-spacing: 4px;
+    line-height: 0.9;
+
+    color: white;
+}
+
+.hero-text h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    font-family: Arial, sans-serif;
+    font-size: clamp(18px, 2vw, 30px);
+    letter-spacing: 9px;
+    font-weight: 500;
+
+    color: #e1c27a;
+}
+
+.hero-line {
+    width: 250px;
+    height: 2px;
+
+    background: #c9a45c;
+
+    margin: 25px 0;
+}
+
+.hero-text p {
+    font-family: Georgia, serif;
+
+    font-size: clamp(20px, 2vw, 30px);
+    line-height: 1.35;
+
+    color: white;
+
+    margin-bottom: 20px;
+}
+
+.hero-symbol {
+    font-size: 35px;
+    color: #d5b36a;
+
+    margin: 15px 0 30px;
+}
+
+.hero-button {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 25px;
+
+    padding: 20px 35px;
+
+    background: #ead9b0;
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.hero-button span {
+    font-size: 28px;
+}
+
+.hero-button:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: 680px;
+
+        background-position: 65% center;
+    }
+
+    .hero-content {
+        padding: 50px 25px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 70px;
+    }
+
+    .hero-text h2 {
+        font-size: 15px;
+        letter-spacing: 5px;
+    }
+
+    .hero-text p {
+        font-size: 20px;
+    }
+
+    .hero-button {
+        padding: 17px 22px;
+        font-size: 14px;
+    }
+}
+html {
+    scroll-behavior: smooth;
+}
+    </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="#inicio" class="logo">
+
+        <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg">
+
+            <path
+                d="M60 45 L43 27 L15 10 L22 30 L42 42 L20 34 L27 51 L45 57 L25 53 L34 70 L52 65 L60 52"
+                fill="white"/>
+
+            <path
+                d="M60 45 L77 27 L105 10 L98 30 L78 42 L100 34 L93 51 L75 57 L95 53 L86 70 L68 65 L60 52"
+                fill="white"/>
+
+            <path
+                d="M48 39 L60 52 L72 39 L69 68 L60 58 L51 68 Z"
+                fill="white"/>
+
+        </svg>
+
+        <div>
+
+            <div class="logo-text">
+                MORPHO
+            </div>
+
+            <span class="logo-sub">
+                VISTIENDO ESPERANZA
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <nav>
+
+        <a href="#inicio">Inicio</a>
+
+        <a href="#coleccion">Colección</a>
+
+        <a href="#historia">Historia</a>
+
+        <a href="#proposito">Propósito</a>
+
+        <a href="#contacto">Contacto</a>
+
+    </nav>
+
+
+    <div class="header-social">
+
+        <a href="https://instagram.com/_morpho.pe_"
+           target="_blank">
+           <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://wa.me/51993727738"
+           target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <div class="hero-text">
+
+            <h1>MORPHO</h1>
+
+            <h2>VISTIENDO ESPERANZA</h2>
+
+            <div class="hero-line"></div>
+
+            <p>
+                No somos solamente lo que hemos vivido.<br>
+                Dios todavía está transformando<br>
+                nuestra historia.
+            </p>
+
+            <div class="hero-symbol">✦</div>
+
+            <a href="#coleccion" class="hero-button">
+    DESCUBRIR LA COLECCIÓN
+    <span>→</span>
+</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GALERIA ================= -->
+
+<section id="coleccion">
+
+    <div class="collection-header">
+
+        <small>
+            MORPHO · VISTIENDO ESPERANZA
+        </small>
+
+        <h2>
+            Colección Esperanza
+        </h2>
+
+        <p>
+            Diez mensajes. Diez diseños. Una misma esperanza.
+        </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+
+        <!-- E01 -->
+
+        <div class="product-card">
+
+            <a href="E01.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E01/E01-espalda.jpeg"
+                        alt="MORPHO E01">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E01
+                    </div>
+
+                    <h3>
+                        Para Dios nada es imposible
+                    </h3>
+
+                    <p>
+                        Lucas 1:37
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- E02 -->
+
+        <div class="product-card">
+
+            <a href="E02.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E02/E02-espalda.jpeg"
+                        alt="MORPHO E02">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E02
+                    </div>
+
+                    <h3>
+                        No temas, yo estoy contigo
+                    </h3>
+
+                    <p>
+                        Isaías 41:10
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- E03 -->
+
+        <div class="product-card">
+
+            <a href="E03.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E03/E03-espalda.jpeg"
+                        alt="MORPHO E03">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E03
+                    </div>
+
+                    <h3>
+                        Confía en el Señor
+                    </h3>
+
+                    <p>
+                        Proverbios 3:5
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- E04 -->
+
+        <div class="product-card">
+
+            <a href="E04.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E04/E04-espalda.jpeg"
+                        alt="MORPHO E04">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E04
+                    </div>
+
+                    <h3>
+                        Dios está contigo
+                    </h3>
+
+                    <p>
+                        Deuteronomio 31:8
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- E05 -->
+
+        <div class="product-card">
+
+            <a href="E05.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E05/E05-espalda.jpeg"
+                        alt="MORPHO E05">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E05
+                    </div>
+
+                    <h3>
+                        Él renueva tus fuerzas
+                    </h3>
+
+                    <p>
+                        Isaías 40:31
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- E06 -->
+
+        <div class="product-card">
+
+            <a href="E06.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E06/E06-espalda.jpeg"
+                        alt="MORPHO E06">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E06
+                    </div>
+
+                    <h3>
+                        Todo lo puedo en Cristo
+                    </h3>
+
+                    <p>
+                        Filipenses 4:13
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- E07 -->
+
+        <div class="product-card">
+
+            <a href="E07.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E07/E07-espalda.jpeg"
+                        alt="MORPHO E07">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E07
+                    </div>
+
+                    <h3>
+                        Dios tiene un propósito
+                    </h3>
+
+                    <p>
+                        Romanos 8:28
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- E08 -->
+
+        <div class="product-card">
+
+            <a href="E08.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E08/E08-espalda.jpeg"
+                        alt="MORPHO E08">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E08
+                    </div>
+
+                    <h3>
+                        Yo estoy contigo
+                    </h3>
+
+                    <p>
+                        Isaías 43:2
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- E09 -->
+
+        <div class="product-card">
+
+            <a href="E09.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E09/E09-espalda.jpeg"
+                        alt="MORPHO E09">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E09
+                    </div>
+
+                    <h3>
+                        Él hará nuevas todas las cosas
+                    </h3>
+
+                    <p>
+                        Apocalipsis 21:5
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- E10 -->
+
+        <div class="product-card">
+
+            <a href="E10.html">
+
+                <div class="product-image">
+
+                    <img
+                        src="imagenes/E10/E10-espalda.jpeg"
+                        alt="MORPHO E10">
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-code">
+                        E10
+                    </div>
+
+                    <h3>
+                        Espera en el Señor
+                    </h3>
+
+                    <p>
+                        Salmos 27:14
+                    </p>
+
+                    <span class="product-button">
+                        VER DISEÑO →
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PROPOSITO ================= -->
+
+<section class="values" id="proposito">
+
+    <div class="value">
+
+        <div class="value-icon">
+            ✝️
+        </div>
+
+        <h3>
+            FE
+        </h3>
+
+        <p>
+            Confiamos en Dios incluso cuando
+            no entendemos el camino.
+        </p>
+
+        <small>
+            HEBREOS 11:1
+        </small>
+
+    </div>
+
+
+    <div class="value">
+
+        <div class="value-icon">
+            🦋
+        </div>
+
+        <h3>
+            TRANSFORMACIÓN
+        </h3>
+
+        <p>
+            Dios puede transformar nuestra historia
+            y hacer algo nuevo.
+        </p>
+
+        <small>
+            2 CORINTIOS 5:17
+        </small>
+
+    </div>
+
+
+    <div class="value">
+
+        <div class="value-icon">
+            ♡
+        </div>
+
+        <h3>
+            ESPERANZA
+        </h3>
+
+        <p>
+            Siempre puede existir un nuevo comienzo
+            para quien pone su confianza en Dios.
+        </p>
+
+        <small>
+            LAMENTACIONES 3:22-23
+        </small>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= HISTORIA ================= -->
+
+<section class="story" id="historia">
+
+    <div>
+
+        <div class="story-label">
+            NUESTRA HISTORIA
+        </div>
+
+        <h2>
+            Vistiendo un mensaje.
+        </h2>
+
+        <p>
+
+            MORPHO nace con una idea sencilla:
+
+            <br><br>
+
+            una prenda puede ser mucho más
+            que una prenda.
+
+            <br><br>
+
+            Puede llevar una palabra de esperanza,
+            recordar una promesa de Dios y convertirse
+            en un mensaje para quien la vea.
+
+        </p>
+
+    </div>
+
+
+    <div class="story-quote">
+
+        “Porque yo sé muy bien los planes
+        que tengo para ustedes.”
+
+        <small>
+            JEREMÍAS 29:11
+        </small>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= REDES ================= -->
+
+<section class="social-section" id="redes">
+
+    <h2>
+        COMPARTE ESPERANZA
+    </h2>
+
+    <p>
+        Síguenos y descubre nuevos mensajes,
+        colecciones y contenido MORPHO.
+    </p>
+
+
+    <div class="social-links">
+
+        <a
+            class="social-link"
+            href="https://instagram.com/_morpho.pe_"
+            target="_blank">
+
+            <i class="fa-brands fa-instagram"></i> INSTAGRAM
+
+        </a>
+
+
+        <a
+            class="social-link"
+            href="https://www.tiktok.com/@morpho605"
+            target="_blank">
+
+            <i class="fa-brands fa-tiktok"></i> TIKTOK
+
+        </a>
+
+
+        <a
+            class="social-link"
+            href="https://www.facebook.com/profile.php?id=61591032170647"
+            target="_blank">
+
+           <i class="fa-brands fa-facebook-f"></i> FACEBOOK
+
+        </a>
+
+
+        <a
+            class="social-link"
+            href="https://wa.me/51993727738"
+            target="_blank">
+
+          <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contacto">
+
+    <div class="footer-grid">
+
+
+        <div>
+
+            <div class="logo">
+
+                <svg viewBox="0 0 120 90"
+                     xmlns="http://www.w3.org/2000/svg">
+
+                    <path
+                        d="M60 45 L43 27 L15 10 L22 30 L42 42 L20 34 L27 51 L45 57 L25 53 L34 70 L52 65 L60 52"
+                        fill="white"/>
+
+                    <path
+                        d="M60 45 L77 27 L105 10 L98 30 L78 42 L100 34 L93 51 L75 57 L95 53 L86 70 L68 65 L60 52"
+                        fill="white"/>
+
+                    <path
+                        d="M48 39 L60 52 L72 39 L69 68 L60 58 L51 68 Z"
+                        fill="white"/>
+
+                </svg>
+
+
+                <div>
+
+                    <div class="logo-text">
+                        MORPHO
+                    </div>
+
+                    <span class="logo-sub">
+                        VISTIENDO ESPERANZA
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="footer-description">
+
+                Transformados por Él,
+                para inspirar a otros.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h4>
+                NAVEGACIÓN
+            </h4>
+
+            <a href="#inicio">Inicio</a>
+
+            <a href="#coleccion">Colección</a>
+
+            <a href="#historia">Nuestra Historia</a>
+
+            <a href="#proposito">Propósito</a>
+
+            <a href="#redes">Contacto</a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h4>
+                COLECCIÓN
+            </h4>
+
+            <a href="E01.html">Esperanza 01</a>
+            <a href="E02.html">Esperanza 02</a>
+            <a href="E03.html">Esperanza 03</a>
+            <a href="E04.html">Esperanza 04</a>
+            <a href="E05.html">Esperanza 05</a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h4>
+                CONTACTO
+            </h4>
+
+            <a href="https://wa.me/51993727738" target="_blank" class="social-btn">
+    <i class="fa-brands fa-whatsapp"></i>
+    WHATSAPP
+</a>
+
+            <a href="mailto:contacto.morpho.pe@gmail.com?subject=Consulta%20MORPHO">
+                Correo electrónico
+            </a>
+
+           <a href="https://www.instagram.com/_morpho.pe_" target="_blank" class="social-btn">
+    <i class="fa-brands fa-instagram"></i>
+    INSTAGRAM
+</a>
+
+<a href="https://www.tiktok.com/@morpho605" target="_blank" class="social-btn">
+    <i class="fa-brands fa-tiktok"></i>
+    TIKTOK
+</a>
+
+<a href="https://www.facebook.com/profile.php?id=61591032170647" target="_blank" class="social-btn">
+    <i class="fa-brands fa-facebook-f"></i>
+    FACEBOOK
+</a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 MORPHO · VISTIENDO ESPERANZA
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
